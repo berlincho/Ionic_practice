@@ -18,12 +18,15 @@
 
 <ion-content class="card-backgroud-image">
 <div *ngIf="dishes">
-  <ion-card *ngFor="let dish of dishes" (click)="dishSelected($event, dish)"
-  (pan)="addToFavorites(dish)">
-    <img src="{{BaseURL + dish.image}}" />
-    <div class="card-title">{{dish.name}}</div>
-    <div class="card-subtitle">{{dish.description}}</div>
-  </ion-card>
+  <ion-row>
+    <ion-col col-12 col-lg-4 *ngFor="let dish of dishes" (click)="dishSelected($event, dish)">
+      <ion-card (pan)="addToFavorites(dish)">
+        <img src="{{BaseURL + dish.image}}" />
+        <div class="card-title">{{dish.name}}</div>
+        <div class="card-subtitle">{{dish.description}}</div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </div>
 <div [hidden]="dishes || errMess">
   <ion-spinner></ion-spinner>
